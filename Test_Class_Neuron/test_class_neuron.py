@@ -27,6 +27,16 @@ class Vérification_Liste_Coefficients(unittest.TestCase):
         # Vérifie que la longueur de la liste de coefficients est égale à 4
         self.assertEqual(len(test1.coefficients), 4)
 
+# Crée une classe 'Vérification_Coefficients' pour tester les valeurs des coefficients d'un neurone
+class Vérification_Coefficients(unittest.TestCase):
+    # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
+    def test_init(self):
+        # Crée un neurone avec 3 entrées
+        test1 = Neuron(3)
+        # Vérifie que les coefficients sont bien compris entre -1 et 1
+        for coef in test1.coefficients:
+            self.assertTrue(coef >= -1 and coef <= 1)
+
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
     unittest.main()   
