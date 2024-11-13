@@ -53,9 +53,14 @@ class Vérification_Neuron(unittest.TestCase):
 
     # Définit la méthode 'test_Vérification_Position' pour tester la position d'un coefficient
     def Vérification_Entier_Méthode_getCoefficient(self):
-        test1 = Neuron(3)
-        with self.assertRaises(TypeError):
-            test1.getCoefficient(2.5)
+        def test_Vérification_Entier_Méthode_getCoefficient(self):
+            test1 = Neuron(3)
+            with self.assertRaises(ValueError):
+                test1.getCoefficient("a")
+            with self.assertRaises(ValueError):
+                test1.getCoefficient(1.5)
+            with self.assertRaises(ValueError):
+                test1.getCoefficient(None)
 
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
