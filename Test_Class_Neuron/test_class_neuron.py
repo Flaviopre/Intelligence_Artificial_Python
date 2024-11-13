@@ -42,50 +42,77 @@ class Vérification_Neuron(unittest.TestCase):
     # Définit la méthode 'test_Vérification_Neuron_Size' pour tester le nombre d'entrées d'un neurone
     def test_Vérification_Neuron_Size(self):
         test1 = Neuron(3)
+        # Vérifie que le nombre d'entrées du neurone est égal à 3
         self.assertEqual(test1.getNeuronSize(), 3)
     
         # Définit la méthode 'test_Vérification_Position' pour tester les paramètres d'entrée de la fonction 
     def test_Vérification_Entier_Méthode_getCoefficient(self):
         test1 = Neuron(3)
+        # Vérifie que la méthode lève une exception si la position n'est pas un entier
         with self.assertRaises(TypeError):
             test1.getCoefficient("string")
+        # Vérifie que la méthode lève une exception si la position est un flottant
         with self.assertRaises(TypeError):
             test1.getCoefficient(1.5)
+        # Vérifie que la méthode lève une exception si la position est nulle
         with self.assertRaises(TypeError):
             test1.getCoefficient(None)
+        # Vérifie que la méthode lève une exception si la position est supérieure au nombre d'entrées
         with self.assertRaises(ValueError):
             test1.getCoefficient(6)
+        # Vérifie que la méthode lève une exception si la position est inférieure à 1
         with self.assertRaises(ValueError):
             test1.getCoefficient(-6)
+        # Vérifie que la méthode lève une exception si la position est égale à 0
         with self.assertRaises(ValueError):
             test1.getCoefficient(0)
+        # Vérifie que la méthode lève une exception si la position est inférieure à 1 mais dans la plage des entrées
         with self.assertRaises(ValueError):
             test1.getCoefficient(-1)
                 
     # Définit la méthode 'test_Vérification_Position' pour tester la position d'un coefficient
     def test_Vérification_Méthode_getCoefficient(self):
         test1 = Neuron(3)
+        # Garde en mémoire la valeur du coefficient à la position 2
         valeur_sans_méthode = test1.coefficients[2]
+        # Récupère la valeur du coefficient à la position 2 avec la méthode getCoeff
         valeur_avec_méthode = test1.getCoefficient(2)
+        # Vérifie que les deux valeurs sont égales
         self.assertEqual(valeur_sans_méthode, valeur_avec_méthode)
     
     # Définit la méthode 'test_entier_setCoefficient'pour tester les paramètres d'entrée de la fonction 
     def test_Vérification_Entier_Méthode_setCoefficient(self):
         test1 = Neuron(3)
+        # Vérifie que la méthode lève une exception si la position n'est pas un entier
         with self.assertRaises(TypeError):
             test1.setCoefficient("string", 1.5)
+        # Vérifie que la méthode lève une exception si la valeur n'est pas un flottant
         with self.assertRaises(TypeError):
             test1.setCoefficient(1.5, 1.5)
+        # Vérifie que la méthode lève une exception si la valeur est une chaîne de caractères
         with self.assertRaises(TypeError):
             test1.setCoefficient(1, "string")
+        # Vérifie que la méthode lève une exception si la position est supérieure au nombre d'entrées
         with self.assertRaises(ValueError):
             test1.setCoefficient(6, 1.5)
+        # Vérifie que la méthode lève une exception si la position est inférieure à 1 
         with self.assertRaises(ValueError):
             test1.setCoefficient(-6, 1.5)
-            
-        
-        
-            
+    
+    # Définit la méthode 'test_Modification_Coefficient' pour tester la modification d'un coefficient*
+    def test_Modification_Coefficient(self):
+        test1 = Neuron(3)
+        # Garde en mémoire la valeur du coefficient à la position 2
+        résultat_sans_méthode = test1.coefficients[2]
+        # Modifie la valeur du coefficient à la position 2
+        test1.setCoefficient(2, 0.5)
+        # Récupère la valeur du coefficient à la position 2 nouvellement modifiée
+        résultat_avec_méthode = test1.coefficients[2]
+        # Vérifie que les deux valeurs sont différentes car elles ont été modifiées
+        self.assertNotEqual(résultat_sans_méthode, résultat_avec_méthode)
+        # Vérifie que la valeur du coefficient à la position 2 est égale à 0.5
+        self.assertEqual(résultat_avec_méthode, 0.5)
+                     
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
     unittest.main()   
