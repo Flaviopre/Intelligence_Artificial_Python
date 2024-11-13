@@ -101,17 +101,17 @@ class Vérification_Neuron(unittest.TestCase):
     
     # Définit la méthode 'test_Modification_Coefficient' pour tester la modification d'un coefficient*
     def test_Modification_Coefficient(self):
-        test1 = Neuron(3)
+        verif = Neuron(3)
         # Garde en mémoire la valeur du coefficient à la position 2
-        résultat_sans_méthode = test1.coefficients[2]
+        résultat_sans_méthode_set_coeff = verif.coefficients[2]
         # Modifie la valeur du coefficient à la position 2
-        test1.setCoefficient(2, 0.5)
+        verif.setCoefficient(2, 0.5)
         # Récupère la valeur du coefficient à la position 2 nouvellement modifiée
-        résultat_avec_méthode = test1.coefficients[2]
+        résultat_avec_méthode_setcoeff = verif.coefficients[2]
         # Vérifie que les deux valeurs sont différentes car elles ont été modifiées
-        self.assertNotEqual(résultat_sans_méthode, résultat_avec_méthode)
+        self.assertNotEqual(résultat_sans_méthode_set_coeff, résultat_avec_méthode_setcoeff)
         # Vérifie que la valeur du coefficient à la position 2 est égale à 0.5
-        self.assertEqual(résultat_avec_méthode, 0.5)
+        self.assertEqual(résultat_avec_méthode_setcoeff, 0.5)
                      
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
