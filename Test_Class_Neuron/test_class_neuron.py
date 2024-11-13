@@ -21,7 +21,7 @@ class Vérification_Neuron(unittest.TestCase):
     # Définit la méthode 'test_Vérification_Nombre_Entrées_Nul' pour tester l'initialisation d'un neurone avec 0 entrée
     def test_Vérification_Nombre_Entrées_Nul(self):
         # Vérifie que l'initialisation d'un neurone avec 0 entrée lève une exception
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             Neuron(None)
             
     # Définit la méthode 'test_vérification_liste_coefficients' pour tester la liste de coefficients d'un neurone
