@@ -18,6 +18,14 @@ class Vérification_Nombre_Entrées(unittest.TestCase):
         # Vérifie que le nombre d'entrées du neurone est égal à 3
         self.assertEqual(test1.num_inputs, 3)
 
+# Crée une classe 'Vérification_Nombre_Entrées_Nul' pour tester le cas où le nombre d'entrées est nul
+class Vérification_Nombre_Entrées_Nul(unittest.TestCase):
+    # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
+    def test_init(self):
+        # Vérifie que l'initialisation d'un neurone avec 0 entrée lève une exception
+        with self.assertRaises(ValueError):
+            Neuron(0)
+            
 # Crée une classe 'Vérification_Liste_Coefficients' pour tester le nombre de coefficients dans la liste d'un neurone
 class Vérification_Liste_Coefficients(unittest.TestCase):
     # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
