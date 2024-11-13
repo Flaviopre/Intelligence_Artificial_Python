@@ -27,3 +27,14 @@ class Neuron:
         elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None :
             raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
         return self.coefficients[position]
+    
+    # Définit la méthode setCoefficient qui modifie la valeur du coefficient à une position donnée
+    def setCoefficient(self, position, value):
+        if not isinstance(position, int):
+            raise TypeError("La position doit être un entier.")
+        elif not isinstance(value, float):
+            raise TypeError("La valeur doit être un flottant.")
+        elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None:
+            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
+        self.coefficients[position] = value
+        
