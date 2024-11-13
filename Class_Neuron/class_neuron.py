@@ -6,7 +6,7 @@ class Neuron:
     # Définit la méthode __init__ qui initialise les attributs de la classe 'Neuron'
     def __init__(self, num_inputs):
         # Vérifie si le nombre d'entrées est nul et lève une exception si c'est le cas
-        if num_inputs == 0:
+        if num_inputs == None:
             raise ValueError("Le nombre d'entrées ne peut pas être nul.")
         
         # Initialise le nombre d'entrées du neurone
@@ -23,7 +23,7 @@ class Neuron:
     # Définit la méthode getCoefficient qui retourne la valeur du coefficient à une position donnée
     def getCoefficient(self, position):
         if not isinstance(position, int):
-            raise ValueError("La position doit être un entier.")
+            raise TypeError("La position doit être un entier.")
         elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None :
             raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
         return self.coefficients[position]
