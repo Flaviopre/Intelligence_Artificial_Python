@@ -9,7 +9,7 @@ from Class_Neuron.class_neuron import Neuron
 # Importe le module 'unittest'
 import unittest
 
-# Crée une classe 'TestNeuron' qui hérite de la classe 'unittest.TestCase'
+# Crée une classe 'Vérification_Nombre_Entrées' pour tester le nombre d'entrées d'un neurone
 class Vérification_Nombre_Entrées(unittest.TestCase):
     # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
     def test_init(self):
