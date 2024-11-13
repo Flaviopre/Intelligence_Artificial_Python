@@ -22,19 +22,31 @@ class Neuron:
     
     # Définit la méthode getCoefficient qui retourne la valeur du coefficient à une position donnée
     def getCoefficient(self, position):
+        # Vérifie si la position est un entier et lève une exception si ce n'est pas le cas
         if not isinstance(position, int):
+            # Lève une exception de Type si la position n'est pas un entier
             raise TypeError("La position doit être un entier.")
+        # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
         elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None :
+            # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
             raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
+        # Retourne la valeur du coefficient à la position donnée
         return self.coefficients[position]
     
     # Définit la méthode setCoefficient qui modifie la valeur du coefficient à une position donnée
     def setCoefficient(self, position, value):
+        # Vérifie si la position est un entier et lève une exception si ce n'est pas le cas
         if not isinstance(position, int):
+            # Lève une exception de Type si la position n'est pas un entier
             raise TypeError("La position doit être un entier.")
+        # Vérifie si la valeur est un flottant et lève une exception si ce n'est pas le cas
         elif not isinstance(value, float):
+            # Lève une exception de Type si la valeur n'est pas un flottant
             raise TypeError("La valeur doit être un flottant.")
+        # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
         elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None:
+            # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
             raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
+        # Modifie la valeur du coefficient à la position donnée
         self.coefficients[position] = value
         
