@@ -9,53 +9,53 @@ from Class_Neuron.class_neuron import Neuron
 # Importe le module 'unittest'
 import unittest
 
-# Crée une classe 'Vérification_Nombre_Entrées' pour tester le nombre d'entrées d'un neurone
-class Vérification_Nombre_Entrées(unittest.TestCase):
-    # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
-    def test_init(self):
+# Crée une classe 'Vérification_Neuron' pour tester la classe Neuron
+class Vérification_Neuron(unittest.TestCase):
+    # Définit la méthode 'test_Vérification_Nombre_Entrées' pour tester le nombre d'entrées d'un neurone
+    def test_Vérification_Nombre_Entrées (self):
         # Crée un neurone avec 3 entrées
         test1 = Neuron(3)
         # Vérifie que le nombre d'entrées du neurone est égal à 3
         self.assertEqual(test1.num_inputs, 3)
-
-# Crée une classe 'Vérification_Nombre_Entrées_Nul' pour tester le cas où le nombre d'entrées est nul
-class Vérification_Nombre_Entrées_Nul(unittest.TestCase):
-    # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
-    def test_init(self):
+        
+    # Définit la méthode 'test_Vérification_Nombre_Entrées_Nul' pour tester l'initialisation d'un neurone avec 0 entrée
+    def test_Vérification_Nombre_Entrées_Nul(self):
         # Vérifie que l'initialisation d'un neurone avec 0 entrée lève une exception
         with self.assertRaises(ValueError):
             Neuron(0)
             
-# Crée une classe 'Vérification_Liste_Coefficients' pour tester le nombre de coefficients dans la liste d'un neurone
-class Vérification_Liste_Coefficients(unittest.TestCase):
-    # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
-    def test_init(self):
+    # Définit la méthode 'test_vérification_liste_coefficients' pour tester la liste de coefficients d'un neurone
+    def test_Vérification_Liste_Coefficients(self):
         # Crée un neurone avec 3 entrées
         test1 = Neuron(3)
         # Vérifie que la longueur de la liste de coefficients est égale à 4
         self.assertEqual(len(test1.coefficients), 4)
 
-# Crée une classe 'Vérification_Coefficients' pour tester les valeurs des coefficients d'un neurone
-class Vérification_Coefficients(unittest.TestCase):
-    # Définit la méthode 'test_init' pour tester l'initialisation d'un neurone
-    def test_init(self):
+    # Définit la méthode 'test_Vérification_Coefficients' pour tester les valeurs des coefficients d'un neurone
+    def test_Vérification_Coefficients(self):
         # Crée un neurone avec 3 entrées
         test1 = Neuron(3)
         # Vérifie que les coefficients sont bien compris entre -1 et 1
         for coef in test1.coefficients:
             self.assertTrue(coef >= -1 and coef <= 1)
 
-# Crée une classe 'Vérification_Neuron_Size' pour tester la méthode 'getNeuronSize' d'un neurone
-class Vérification_Neuron_Size(unittest.TestCase):
-    def test_getNeuronSize(self):
+    # Définit la méthode 'test_Vérification_Neuron_Size' pour tester le nombre d'entrées d'un neurone
+    def test_Vérification_Neuron_Size(self):
         test1 = Neuron(3)
         self.assertEqual(test1.getNeuronSize(), 3)
         
-# Crée une classe 'Vérification_Méthode_getCoefficient' pour tester la méthode 'getCoefficient' d'un neurone
-class Vérification_Méthode_getCoefficient(unittest.TestCase):
-    def test_getCoefficient(self):
+    # Définit la méthode 'test_Vérification_Position' pour tester la position d'un coefficient
+    def test_Vérification_Méthode_getCoefficient(self):
         test1 = Neuron(3)
-        self.assertEqual(test1.getCoefficient(2), test1.coefficients[2])
+        valeur_sans_méthode = test1.coefficients[2]
+        valeur_avec_méthode = test1.getCoefficient(2)
+        self.assertEqual(valeur_sans_méthode, valeur_avec_méthode)
+
+    # Définit la méthode 'test_Vérification_Position' pour tester la position d'un coefficient
+    def Vérification_Entier_Méthode_getCoefficient(self):
+        test1 = Neuron(3)
+        with self.assertRaises(TypeError):
+            test1.getCoefficient(2.5)
 
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
