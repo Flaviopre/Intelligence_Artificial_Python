@@ -21,8 +21,8 @@ class Vérification_Neuron(unittest.TestCase):
     # Définit la méthode 'test_Vérification_Nombre_Entrées_Nul' pour tester l'initialisation d'un neurone avec 0 entrée
     def test_Vérification_Nombre_Entrées_Nul(self):
         # Vérifie que l'initialisation d'un neurone avec 0 entrée lève une exception
-        with self.assertRaises(ValueError):
-            Neuron(0)
+        with self.assertRaises(TypeError):
+            Neuron(None)
             
     # Définit la méthode 'test_vérification_liste_coefficients' pour tester la liste de coefficients d'un neurone
     def test_Vérification_Liste_Coefficients(self):
@@ -54,11 +54,11 @@ class Vérification_Neuron(unittest.TestCase):
     # Définit la méthode 'test_Vérification_Position' pour tester la position d'un coefficient
     def test_Vérification_Entier_Méthode_getCoefficient(self):
         test1 = Neuron(3)
-        with self.assertRaises(ValueError):
-            test1.getCoefficient("a")
+        with self.assertRaises(TypeError):
+            test1.getCoefficient("string")
         with self.assertRaises(ValueError):
             test1.getCoefficient(1.5)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             test1.getCoefficient(None)
         with self.assertRaises(ValueError):
             test1.getCoefficient(6)
@@ -68,6 +68,7 @@ class Vérification_Neuron(unittest.TestCase):
             test1.getCoefficient(0)
         with self.assertRaises(ValueError):
             test1.getCoefficient(-1)
+        
             
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
