@@ -99,8 +99,8 @@ class Vérification_Neuron(unittest.TestCase):
         with self.assertRaises(ValueError):
             test1.setCoefficient(-6, 1.5)
     
-    # Définit la méthode 'test_Modification_Coefficient' pour tester la modification d'un coefficient*
-    def test_Modification_Coefficient(self):
+    # Définit la méthode 'test_Modification_Coefficient' pour tester la modification d'un coefficient avec la méthode setCoeffcient
+    def test_Modification_Coefficient_setCoefficient(self):
         verif = Neuron(3)
         # Garde en mémoire la valeur du coefficient à la position 2
         résultat_sans_méthode_set_coeff = verif.coefficients[2]
