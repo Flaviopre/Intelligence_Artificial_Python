@@ -37,6 +37,12 @@ class Vérification_Coefficients(unittest.TestCase):
         for coef in test1.coefficients:
             self.assertTrue(coef >= -1 and coef <= 1)
 
+# Crée une classe 'Vérification_Neuron_Size' pour tester la méthode 'getNeuronSize' d'un neurone
+class Vérification_Neuron_Size(unittest.TestCase):
+    def test_getNeuronSize(self):
+        test1 = Neuron(3)
+        self.assertEqual(test1.getNeuronSize(), 3)
+
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
     unittest.main()   
