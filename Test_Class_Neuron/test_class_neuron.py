@@ -43,7 +43,7 @@ class Vérification_Neuron_Size(unittest.TestCase):
         test1 = Neuron(3)
         self.assertEqual(test1.getNeuronSize(), 3)
         
-# Crée une classe 'érification_Méthode_getCoefficient' pour tester la méthode 'getCoefficient' d'un neurone
+# Crée une classe 'Vérification_Méthode_getCoefficient' pour tester la méthode 'getCoefficient' d'un neurone
 class Vérification_Méthode_getCoefficient(unittest.TestCase):
     def test_getCoefficient(self):
         test1 = Neuron(3)
