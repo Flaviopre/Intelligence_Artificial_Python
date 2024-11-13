@@ -56,7 +56,7 @@ class Vérification_Neuron(unittest.TestCase):
         test1 = Neuron(3)
         with self.assertRaises(TypeError):
             test1.getCoefficient("string")
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             test1.getCoefficient(1.5)
         with self.assertRaises(TypeError):
             test1.getCoefficient(None)
