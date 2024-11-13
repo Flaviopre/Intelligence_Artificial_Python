@@ -60,6 +60,14 @@ class Vérification_Neuron(unittest.TestCase):
             test1.getCoefficient(1.5)
         with self.assertRaises(ValueError):
             test1.getCoefficient(None)
+        with self.assertRaises(ValueError):
+            test1.getCoefficient(6)
+        with self.assertRaises(ValueError):
+            test1.getCoefficient(-6)
+        with self.assertRaises(ValueError):
+            test1.getCoefficient(0)
+        with self.assertRaises(ValueError):
+            test1.getCoefficient(-1)
             
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
