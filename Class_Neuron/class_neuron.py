@@ -24,6 +24,6 @@ class Neuron:
     def getCoefficient(self, position):
         if not isinstance(position, int):
             raise ValueError("La position doit être un entier.")
-        elif position < 0 or position >= len(self.coefficients) or position == 0 :
-            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_imputs) + ".")
+        elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None :
+            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
         return self.coefficients[position]
