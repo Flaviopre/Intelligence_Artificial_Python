@@ -53,6 +53,16 @@ class Neuron:
     # Définit la méthode getOutput qui calcule la sortie du neurone
     def getOutput(self, liste_entrees):
         
+        # Vérifie si les entrées sont nulles
+        if liste_entrees is None:
+            # Lève une exception de Valeur si les entrées sont nulles
+            raise ValueError("Les entrées ne peuvent pas être nulles.")
+        
+        # Vérifie si les entrées sont vides
+        elif len(liste_entrees) == 0:
+            # Lève une exception de Valeur si les entrées sont vides
+            raise ValueError("Les entrées ne peuvent pas être vides.")
+        
         # Vérifie si la longueur de la liste des entrées est égale au nombre d'entrées du neurone
         if len(liste_entrees) != self.num_inputs :
             # Lève une exception de Valeur si le nombre d'entrées n'est pas égal au nombre d'entrées du neurone
@@ -62,17 +72,7 @@ class Neuron:
         elif isinstance(liste_entrees, list) == False:
             # Lève une exception de Type si les entrées ne sont pas une liste
             raise TypeError("Les entrées doivent être une liste.")
-        
-        # Vérifie si les entrées sont nulles
-        elif liste_entrees == None:
-            # Lève une exception de Valeur si les entrées sont nulles
-            raise ValueError("Les entrées ne peuvent pas être nulles.")
-        
-        # Vérifie si les entrées sont vides
-        elif len(liste_entrees) == 0:
-            # Lève une exception de Valeur si les entrées sont vides
-            raise ValueError("Les entrées ne peuvent pas être vides.")
-        
+                
         # Parcours les entrées
         for i in liste_entrees:
             # Vérifie si les entrées ne sont pas des flottants et lève une exception si ce n'est pas le cas
