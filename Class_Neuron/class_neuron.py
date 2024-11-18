@@ -14,7 +14,7 @@ class Neuron:
         # Initialise une liste de coefficients avec des valeurs aléatoires
         # La liste contient 'num_inputs + 1' éléments
         # Chaque élément est un nombre aléatoire flottants entre -1 et 1
-        self.coefficients = [random.uniform(-1, 1) for i in range(num_inputs + 1)]
+        self.__coefficients = [random.uniform(-1, 1) for i in range(num_inputs + 1)]
             
     # Définit la méthode getNeuronSize qui retourne le nombre d'entrées
     def getNeuronSize(self):
