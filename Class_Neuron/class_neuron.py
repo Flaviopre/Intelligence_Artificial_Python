@@ -14,7 +14,7 @@ class Neuron:
         # Initialise une liste de coefficients avec des valeurs aléatoires
         # La liste contient 'num_inputs + 1' éléments
         # Chaque élément est un nombre aléatoire flottants entre -1 et 1
-        self.__coefficients = [random.uniform(-1, 1) for i in range(num_inputs + 1)]
+        self.__coefficients = [random.uniform(-1, 1) for _ in range(num_inputs + 1)]
             
     # Définit la méthode getNeuronSize qui retourne le nombre d'entrées
     def getNeuronSize(self):
@@ -29,7 +29,7 @@ class Neuron:
         # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
         elif position < 0 or position >= len(self.__coefficients) or position == 0 or position is None:
             # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
-            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
+            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1) + ".")
         # Retourne la valeur du coefficient à la position donnée
         return self.__coefficients[position]
     
@@ -46,7 +46,7 @@ class Neuron:
         # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
         elif position < 0 or position >= len(self.__coefficients) or position == 0 or position is None:
             # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
-            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
+            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1 ) + ".")
         # Modifie la valeur du coefficient à la position donnée
         self.__coefficients[position] = value
         
@@ -66,7 +66,7 @@ class Neuron:
         # Vérifie si la longueur de la liste des entrées est égale au nombre d'entrées du neurone
         if len(liste_entrees) != self.num_inputs:
             # Lève une exception de Valeur si le nombre d'entrées n'est pas égal au nombre d'entrées du neurone
-            raise ValueError("Le nombre d'entrées doit être égal à " + str(self.num_inputs) + ".")
+            raise ValueError("Le nombre d'entrées doit être égal à " + str(self.num_inputs + 1) + ".")
         
         # Vérifie si les entrées sont une liste
         elif not isinstance(liste_entrees, list):
