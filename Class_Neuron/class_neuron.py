@@ -6,7 +6,7 @@ class Neuron:
     # Définit la méthode __init__ qui initialise les attributs de la classe 'Neuron'
     def __init__(self, num_inputs):
         # Vérifie si le nombre d'entrées est nul et lève une exception si c'est le cas
-        if num_inputs == None:
+        if num_inputs is None:
             raise ValueError("Le nombre d'entrées ne peut pas être nul.")
         
         # Initialise le nombre d'entrées du neurone
@@ -27,11 +27,11 @@ class Neuron:
             # Lève une exception de Type si la position n'est pas un entier
             raise TypeError("La position doit être un entier.")
         # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
-        elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None :
+        elif position < 0 or position >= len(self.__coefficients) or position == 0 or position is None:
             # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
             raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
         # Retourne la valeur du coefficient à la position donnée
-        return self.coefficients[position]
+        return self.__coefficients[position]
     
     # Définit la méthode setCoefficient qui modifie la valeur du coefficient à une position donnée
     def setCoefficient(self, position, value):
@@ -44,11 +44,11 @@ class Neuron:
             # Lève une exception de Type si la valeur n'est pas un flottant
             raise TypeError("La valeur doit être un flottant.")
         # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
-        elif position < 0 or position >= len(self.coefficients) or position == 0 or position == None:
+        elif position < 0 or position >= len(self.__coefficients) or position == 0 or position is None:
             # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
             raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs) + ".")
         # Modifie la valeur du coefficient à la position donnée
-        self.coefficients[position] = value
+        self.__coefficients[position] = value
         
     # Définit la méthode getOutput qui calcule la sortie du neurone
     def getOutput(self, liste_entrees):
@@ -64,12 +64,12 @@ class Neuron:
             raise ValueError("Les entrées ne peuvent pas être vides.")
         
         # Vérifie si la longueur de la liste des entrées est égale au nombre d'entrées du neurone
-        if len(liste_entrees) != self.num_inputs :
+        if len(liste_entrees) != self.num_inputs:
             # Lève une exception de Valeur si le nombre d'entrées n'est pas égal au nombre d'entrées du neurone
             raise ValueError("Le nombre d'entrées doit être égal à " + str(self.num_inputs) + ".")
         
         # Vérifie si les entrées sont une liste
-        elif isinstance(liste_entrees, list) == False:
+        elif not isinstance(liste_entrees, list):
             # Lève une exception de Type si les entrées ne sont pas une liste
             raise TypeError("Les entrées doivent être une liste.")
                 
@@ -86,13 +86,12 @@ class Neuron:
         sortie_neurone = 0.0
         
         # Ajoute le dernier coefficient        
-        sortie_neurone += self.coefficients[len(self.num_inputs) + 1]
+        sortie_neurone += self.__coefficients[len(self.__coefficients) - 1]
         
         # Parcours les entrées et les coefficients (à partir du deuxième coefficient)
         for i in range(self.num_inputs):
             # Ajoute le produit de l'entrée et du coefficient à la sortie
-            sortie_neurone += liste_entrees[i] * self.coefficients[i + 1]
+            sortie_neurone += liste_entrees[i] * self.__coefficients[i]
         
         # Retourne la sortie du neurone
         return sortie_neurone
-    
