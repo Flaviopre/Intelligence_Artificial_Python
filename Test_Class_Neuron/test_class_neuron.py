@@ -8,6 +8,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Class_Neuron.class_neuron import Neuron
 # Importe le module 'unittest'
 import unittest
+#Importe le module 'random'
+import random
 
 # Crée une classe 'Vérification_Neuron' pour tester la classe Neuron
 class Vérification_Neuron(unittest.TestCase):
@@ -129,6 +131,23 @@ class Vérification_Neuron(unittest.TestCase):
         with self.assertRaises(ValueError):
             test1.getOutput([])
 
+        # Définit la méthode 'test_Sortie_getOutput' pour tester la méthode getOutput
+        def test_Sortie_getOutput(self):
+            # CHoisi un nombre aléatoire entre 5 et 10
+            nombre_al_entre_5_et_10 = random.randint(5, 10)
+            # Crée un neurone avec un nombre aléatoire d'entrées entre 5 et 10
+            test1_sans_fonction = Neuron(nombre_al_entre_5_et_10)
+            # Choisis le dernier coefficient du neurone
+            test_Sortie_getCoefficients = test1_sans_fonction.coefficients[nombre_al_entre_5_et_10]
+            
+            # Crée une liste de zéros de la taille du nombre aléatoire entre 5 et 10
+            liste_test_0 = [0 for i in range(nombre_al_entre_5_et_10)]
+            # Récupère la sortie du neurone avec la liste de zéros
+            test_Sortie_getOutput_0 = test1_sans_fonction.getOutput(liste_test_0)
+        
+            # Vérifie que la sortie du neurone est égale au dernier coefficient du neurone dans ce cas 
+            self.assertEqual(test_Sortie_getOutput_0, test_Sortie_getCoefficients)
+             
         
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
