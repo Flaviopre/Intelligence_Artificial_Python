@@ -113,8 +113,8 @@ class Vérification_Neuron(unittest.TestCase):
         # Vérifie que la valeur du coefficient à la position 2 est égale à 0.5
         self.assertEqual(résultat_avec_méthode_setcoeff, 0.5)
     
-    # Définit la méthode 'test_sortie_neurone' pour tester l'entrée de la fonction getOutput
-    def test_sortie_neurone(self):
+    # Définit la méthode 'test_Vérification_Entrée_getOutput' pour tester l'entrée de la fonction getOutput
+    def test_Vérification_Entrée_getOutput(self):
         test1 = Neuron(3)
         # Vérifie que la méthode lève une exception si le nombre d'entrées n'est pas égal au nombre d'entrées du neurone
         with self.assertRaises(ValueError):
