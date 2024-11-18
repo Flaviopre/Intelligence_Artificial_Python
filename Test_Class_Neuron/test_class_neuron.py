@@ -141,7 +141,7 @@ class Vérification_Neuron(unittest.TestCase):
         test_Sortie_getCoefficients = test1_sans_fonction.getCoefficient(nombre_al_entre_5_et_10)
         
         # Crée une liste de zéros de la taille du nombre aléatoire entre 5 et 10
-        liste_test_0 = [0 for i in range(nombre_al_entre_5_et_10)]
+        liste_test_0 = [0.0 for i in range(nombre_al_entre_5_et_10)]
         # Récupère la sortie du neurone avec la liste de zéros
         test_Sortie_getOutput_0 = test1_sans_fonction.getOutput(liste_test_0)
     
@@ -153,7 +153,7 @@ class Vérification_Neuron(unittest.TestCase):
         # Choisi un nombre aléatoire entre 5 et 10
         nombre_al_entre_5_et_10 = random.randint(5, 10)
         # Crée une liste de zéros de la taille du nombre aléatoire entre 5 et 10
-        liste_test_0 = [0 for i in range(nombre_al_entre_5_et_10)]
+        liste_test_0 = [0.0 for i in range(nombre_al_entre_5_et_10)]
         
         # Crée un neurone avec un nombre aléatoire d'entrées entre 5 et 10
         for i in range(nombre_al_entre_5_et_10):
