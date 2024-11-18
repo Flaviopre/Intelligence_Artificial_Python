@@ -50,3 +50,35 @@ class Neuron:
         # Modifie la valeur du coefficient à la position donnée
         self.coefficients[position] = value
         
+    # Définit la méthode getOutput qui calcule la sortie du neurone
+    def getOutput(self, inputs):
+        
+        # Vérifie si la longueur de la liste des entrées est égale au nombre d'entrées du neurone
+        if len(inputs) != self.num_inputs:
+            # Lève une exception de Valeur si le nombre d'entrées n'est pas égal au nombre d'entrées du neurone
+            raise ValueError("Le nombre d'entrées doit être égal à " + str(self.num_inputs) + ".")
+        
+        # Vérifie si les entrées sont une liste
+        elif isinstance(inputs, list) == False:
+            # Lève une exception de Type si les entrées ne sont pas une liste
+            raise TypeError("Les entrées doivent être une liste.")
+        
+        # Vérifie si les entrées sont nulles
+        elif inputs == None:
+            # Lève une exception de Valeur si les entrées sont nulles
+            raise ValueError("Les entrées ne peuvent pas être nulles.")
+        
+        # Vérifie si les entrées sont vides
+        elif len(inputs) == 0:
+            # Lève une exception de Valeur si les entrées sont vides
+            raise ValueError("Les entrées ne peuvent pas être vides.")
+        
+        # Parcours les entrées
+        for i in inputs:
+            # Vérifie si les entrées ne sont pas des flottants et lève une exception si ce n'est pas le cas
+            if not isinstance(i, float):
+                # Lève une exception de Type si les entrées ne sont pas des flottants
+                raise TypeError("Les entrées doivent être des flottants.")
+            # Arrête la boucle SI si une entrée est nulle
+            break 
+        return inputs
