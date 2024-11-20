@@ -28,9 +28,9 @@ class Neuron:
             # Lève une exception de Type si la position n'est pas un entier
             raise TypeError("La position doit être un entier.")
         # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
-        # elif position < 0 or position >= len(self.__coefficients) + 1 or position == 0 or position is None:
-        #     # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
-        #     raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1) + ".")
+        elif position < 0 or position >= len(self.__coefficients) + 1 or position == 0 or position is None:
+            # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
+            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1) + ".")
         # Retourne la valeur du coefficient à la position donnée
         return self.__coefficients[position]
     
