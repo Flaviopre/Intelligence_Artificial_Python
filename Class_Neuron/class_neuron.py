@@ -90,7 +90,7 @@ class Neuron:
         sortie_neurone += self.__coefficients[-1]
         
         # Parcours les entrées et les coefficients en enlevant le dernier coefficient qui est notre constante
-        for i in range(self.num_inputs - 1):
+        for i in range(self.num_inputs):
             # Ajoute le produit de l'entrée et du coefficient à la sortie
             sortie_neurone += liste_entrees[i] * self.__coefficients[i]
         
