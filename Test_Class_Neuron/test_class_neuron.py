@@ -61,7 +61,7 @@ class Vérification_Neuron(unittest.TestCase):
             test1.getCoefficient(None)
         # Vérifie que la méthode lève une exception si la position est supérieure au nombre d'entrées
         with self.assertRaises(ValueError):
-            test1.getCoefficient(6)
+            test1.getCoefficient(test1.num_inputs + 1)
         # Vérifie que la méthode lève une exception si la position est inférieure à 1
         with self.assertRaises(ValueError):
             test1.getCoefficient(-6)
@@ -141,7 +141,7 @@ class Vérification_Neuron(unittest.TestCase):
         test_Sortie_getCoefficients = test1_sans_fonction.getCoefficient(nombre_al_entre_5_et_10)
         
         # Crée une liste de zéros de la taille du nombre aléatoire entre 5 et 10
-        liste_test_0 = [0.0 for i in range(nombre_al_entre_5_et_10)]
+        liste_test_0 = [0.0 for _ in range(nombre_al_entre_5_et_10)]
         # Récupère la sortie du neurone avec la liste de zéros
         test_Sortie_getOutput_0 = test1_sans_fonction.getOutput(liste_test_0)
     
@@ -152,24 +152,31 @@ class Vérification_Neuron(unittest.TestCase):
     def test_Sortie_getOutput_coeff_0(self):
         # Choisi un nombre aléatoire entre 5 et 10
         nombre_al_entre_5_et_10 = random.randint(5, 10)
-        # Crée une liste de zéros de la taille du nombre aléatoire entre 5 et 10
-        liste_test_0 = [0.0 for i in range(nombre_al_entre_5_et_10)]
-        
         # Crée un neurone avec un nombre aléatoire d'entrées entre 5 et 10
-        for i in range(nombre_al_entre_5_et_10):
-            # Modifie le premier coefficient du neurone
-            liste_test_0[i] = 1
-            # Crée un neurone avec un nombre aléatoire d'entrées entre 5 et 10
-            test1 = Neuron(nombre_al_entre_5_et_10)
-            # Modifie le dernier coefficient du neurone
-            test1.setCoefficient(len(nombre_al_entre_5_et_10 + 1), 0) 
-            # Récupère la sortie du neurone avec la liste de zéros
-            test_Sortie_getOutput_0 = test1.getOutput(liste_test_0)
-            # Vérifie que la sortie du neurone est égale à coefficient de la sortie de getOutput
-            test_Sortie_getCoefficients = test1.getCoefficient(i)
-            # Vérifie que la sortie du neurone est égale au dernier coefficient du neurone dans ce cas
-            self.assertEqual(test_Sortie_getOutput_0, test_Sortie_getCoefficients)
-                
+        test1 = Neuron(nombre_al_entre_5_et_10)
+        
+        # Met tous les coefficients à zéro
+        for i in range(1, nombre_al_entre_5_et_10 + 2):
+            # Modifie la valeur du coefficient qui vaudra 0 à la position donnée par i
+            test1.setCoefficient(i, 0.0)
+        
+        # Crée une liste d'entrées remplie aléatoirement
+        liste_entrées = [random.uniform(-1, 1) for _ in range(nombre_al_entre_5_et_10)]
+        
+        # Teste chaque coefficient en le remplaçant par une valeur aléatoire
+        # Parcours la liste des coefficients du neurone en partant de 1 jusqu'à nombre_al_entre_5_et_10 + 1
+        for i in range(1, nombre_al_entre_5_et_10 + 1):
+            # Crée une valeur aléatoire entre -1 et 1
+            valeur_aléatoire = random.uniform(-1, 1)
+            # Modifie la valeur du coefficient à la position i
+            test1.setCoefficient(i, valeur_aléatoire)
+            # Récupère la sortie du neurone avec la liste d'entrées
+            sortie = test1.getOutput(liste_entrées)
+            # Vérifie que la sortie du neurone est égale à la valeur aléatoire multipliée par la valeur de la liste d'entrées à la position i - 1
+            self.assertAlmostEqual(sortie, valeur_aléatoire * liste_entrées[i - 1], places=5)
+            # Remet le coefficient à zéro
+            test1.setCoefficient(i, 0.0)
+
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
     unittest.main()
