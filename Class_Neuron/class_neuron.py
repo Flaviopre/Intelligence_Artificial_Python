@@ -15,6 +15,7 @@ class Neuron:
         # La liste contient 'num_inputs + 1' éléments
         # Chaque élément est un nombre aléatoire flottants entre -1 et 1
         self.__coefficients = [random.uniform(-1, 1) for _ in range(num_inputs + 1)]
+        print(self.__coefficients)
             
     # Définit la méthode getNeuronSize qui retourne le nombre d'entrées
     def getNeuronSize(self):
@@ -27,9 +28,9 @@ class Neuron:
             # Lève une exception de Type si la position n'est pas un entier
             raise TypeError("La position doit être un entier.")
         # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
-        elif position < 0 or position >= len(self.__coefficients) or position == 0 or position is None:
-            # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
-            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1) + ".")
+        # elif position < 0 or position >= len(self.__coefficients) + 1 or position == 0 or position is None:
+        #     # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
+        #     raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1) + ".")
         # Retourne la valeur du coefficient à la position donnée
         return self.__coefficients[position]
     
@@ -86,10 +87,10 @@ class Neuron:
         sortie_neurone = 0.0
         
         # Ajoute le dernier coefficient        
-        sortie_neurone += self.__coefficients[len(self.__coefficients) - 1]
+        sortie_neurone += self.__coefficients[-1]
         
-        # Parcours les entrées et les coefficients (à partir du deuxième coefficient)
-        for i in range(self.num_inputs):
+        # Parcours les entrées et les coefficients en enlevant le dernier coefficient qui est notre constante
+        for i in range(self.num_inputs - 1):
             # Ajoute le produit de l'entrée et du coefficient à la sortie
             sortie_neurone += liste_entrees[i] * self.__coefficients[i]
         
