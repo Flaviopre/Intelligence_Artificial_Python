@@ -27,28 +27,28 @@ class Neuron:
         if not isinstance(position, int):
             # Lève une exception de Type si la position n'est pas un entier
             raise TypeError("La position doit être un entier.")
-        # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
-        elif position < 0 or position >= len(self.__coefficients) + 1 or position == 0 or position is None:
+        # Vérifie si la position est inférieure à 0 ou supérieure ou nulle et lève une exception si c'est le cas
+        elif position < 0 or position >= len(self.__coefficients) or position == 0 or position is None:
             # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
             raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1) + ".")
         # Retourne la valeur du coefficient à la position donnée
         return self.__coefficients[position]
     
-    # Définit la méthode setCoefficient qui modifie la valeur du coefficient à une position donnée
+    # Définit la méthode setCoefficient qui définit la valeur du coefficient à une position donnée
     def setCoefficient(self, position, value):
-        # Vérifie si la position est un entier et lève une exception si ce n'est pas le cas
+        # Vérifie si la position est un entier
         if not isinstance(position, int):
             # Lève une exception de Type si la position n'est pas un entier
             raise TypeError("La position doit être un entier.")
-        # Vérifie si la valeur est un flottant et lève une exception si ce n'est pas le cas
+        # Vérifie si la valeur est un flottant
         elif not isinstance(value, float):
             # Lève une exception de Type si la valeur n'est pas un flottant
             raise TypeError("La valeur doit être un flottant.")
-        # Vérifie si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle et lève une exception si c'est le cas
-        elif position < 0 or position >= len(self.__coefficients) or position == 0 or position is None:
-            # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou égale à 0 ou nulle
-            raise ValueError("La position doit être comprise entre 1 et " + str(self.num_inputs + 1 ) + ".")
-        # Modifie la valeur du coefficient à la position donnée
+        # Vérifie si la position est inférieure à 0 ou supérieure ou nulle
+        elif position < 0 or position >= len(self.__coefficients) or position is None:
+            # Lève une exception de Valeur si la position est inférieure à 0 ou supérieure au nombre d'entrées ou nulle
+            raise ValueError("La position doit être comprise entre 0 et " + str(self.num_inputs) + ".")
+        # Définit la valeur du coefficient à la position donnée
         self.__coefficients[position] = value
         
     # Définit la méthode getOutput qui calcule la sortie du neurone
