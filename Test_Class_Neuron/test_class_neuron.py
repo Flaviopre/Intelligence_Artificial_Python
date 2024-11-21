@@ -175,6 +175,21 @@ class Vérification_Neuron(unittest.TestCase):
             # Remet le coefficient à zéro
             test1.setCoefficient(i, 0.0)
 
+    # Définit la méthode 'test_Sortie_getOutput_dernier_coeff' pour tester la sortie du neurone avec le dernier coefficient modifié
+    def test_Sortie_getOutput_dernier_coeff(self):
+        # Choisi un nombre aléatoire entre 5 et 10
+        nombre_al_entre_5_et_10 = random.randint(5, 10)
+        # Crée un neurone avec un nombre aléatoire d'entrées entre 5 et 10
+        test1 = Neuron(nombre_al_entre_5_et_10)
+            
+        # Teste le dernier coefficient en plaçant toutes les entrées à zéro
+        # Modifie la valeur du dernier coefficient qui vaudra 0 à la position donnée par nombre_al_entre_5_et_10
+        test1.setCoefficient(nombre_al_entre_5_et_10, 0.5)
+        # Récupère la sortie du neurone avec la liste de zéros
+        sortie = test1.getOutput([0.0 for _ in range(nombre_al_entre_5_et_10)])
+        # Vérifie que la sortie du neurone est égale à 0.5 dans ce cas
+        self.assertAlmostEqual(sortie, 0.5, places=5)
+
 # Définit la méthode 'test_compute' pour tester le calcul d'un neurone        
 if __name__ == '__main__':
     unittest.main()
