@@ -148,7 +148,6 @@ class Vérification_Neuron(unittest.TestCase):
         # Vérifie que la sortie du neurone est égale au dernier coefficient du neurone dans ce cas 
         self.assertEqual(test_Sortie_getOutput_0, test_Sortie_getCoefficients)
     
-    # Définit la méthode 'test_Sortie_getOutput' pour tester la méthode getOutput
     def test_Sortie_getOutput_coeff_0(self):
         # Choisi un nombre aléatoire entre 5 et 10
         nombre_al_entre_5_et_10 = random.randint(5, 10)
@@ -159,25 +158,20 @@ class Vérification_Neuron(unittest.TestCase):
         for i in range(0, nombre_al_entre_5_et_10 + 1):
             # Met le coefficient à 0    
             test1.setCoefficient(i, 0.0)
-        print("Les coefficients sont : ", test1._Neuron__coefficients)
         
         # Crée une liste d'entrées remplie aléatoirement
         liste_entrées = [random.uniform(-1, 1) for _ in range(nombre_al_entre_5_et_10)]
         
-        # Met le dernier coefficient à 0 
-        test1.setCoefficient(nombre_al_entre_5_et_10, 0.0)
-        
         # Teste chaque coefficient en le remplaçant par une valeur aléatoire
         # Parcours la liste des coefficients du neurone en partant de 1 jusqu'à nombre_al_entre_5_et_10 + 1
-        for i in range(1, nombre_al_entre_5_et_10 + 1):
-            # Crée une valeur aléatoire entre -1 et 1
-            valeur_aléatoire = test1.getCoefficient(i)
-            # Modifie la valeur du coefficient à la position i
-            test1.setCoefficient(i, valeur_aléatoire)
+        for i in range(0, nombre_al_entre_5_et_10):
+            # Modifie la valeur du coefficient à 1 à la position i
+            test1.setCoefficient(i, 1.0)
             # Récupère la sortie du neurone avec la liste d'entrées
             sortie = test1.getOutput(liste_entrées)
             # Vérifie que la sortie du neurone est égale à la valeur aléatoire multipliée par la valeur de la liste d'entrées à la position i - 1 plus le biais
-            self.assertAlmostEqual(sortie, valeur_aléatoire * liste_entrées[i - 1], places=5)
+            self.assertAlmostEqual(sortie, liste_entrées[i], places=5)
+            print("La valeur de sortie est : ", sortie, "Le calcul correct est : ", liste_entrées[i])
             # Remet le coefficient à zéro
             test1.setCoefficient(i, 0.0)
 
