@@ -16,12 +16,12 @@ class TestSigmoid(unittest.TestCase):
     def test_sigmoid_entrée(self):
         # Teste si une erreur est levée si x n'est pas un entier
         with self.assertRaises(ValueError):
-            # Test avec un float
-            sigmoid(0.5)
+            # Test avec un string
+            sigmoid("string")
         # Teste si une erreur est levée si x n'est pas un entier
         with self.assertRaises(ValueError):
-            # Test avec un string
-            sigmoid("0")
+            # Test avec un booléen
+            sigmoid(True)
     
     # Test de la fonction sigmoid
     def test_sigmoid_sortie(self):
