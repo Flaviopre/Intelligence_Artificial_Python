@@ -1,6 +1,15 @@
 # Importation de la librairie math
 import math
 
+# Importation des modules nécessaires pour l'ajout du chemin parent au sys.path
+import sys
+import os
+# Ajouter le chemin parent au sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Importer le fichier Travail_Préli_Sigmoid du dossier Travail_Préli_Sigmoid
+from Class_Neuron.class_neuron import Neuron
+
 # Définition de la fonction sigmoid
 def sigmoid(x):
     # Vérifie que x est un entier
@@ -19,4 +28,12 @@ def sigmoid(x):
     else:
         # Retourne 1 / (1 + exp(-x))
         return 1 / (1 + math.exp(-x))
-    
+
+# Création de la classe SigmoidNeuron
+class SigmoidNeuron(Neuron):
+    # Constructeur de la classe
+    def __init__(self, num_inputs):
+        # Appelle le constructeur de la classe mère
+        super().__init__(num_inputs)
+        # Initialise le nombre d'entrées du neurone
+        self.num_inputs = num_inputs    
