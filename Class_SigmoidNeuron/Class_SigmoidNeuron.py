@@ -4,9 +4,9 @@ import math
 # Définition de la fonction sigmoid
 def sigmoid(x):
     # Vérifie que x est un entier
-    if not isinstance(x, int):
+    if not isinstance(x, (int, float)):
         # Lève une erreur si x n'est pas un entier
-        raise ValueError("x doit être un entier")
+        raise ValueError("x doit être un nombre")
     # Si x est supérieur à 100
     if x > 100:
         # Retourne 1.0
