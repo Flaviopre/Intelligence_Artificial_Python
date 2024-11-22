@@ -13,8 +13,18 @@ from Class_SigmoidNeuron.Class_SigmoidNeuron import sigmoid
 
 # Création de la classe de test TestSigmoid qui va tester la fonction sigmoid
 class TestSigmoid(unittest.TestCase):
+    def test_sigmoid_entrée(self):
+        # Teste si une erreur est levée si x n'est pas un entier
+        with self.assertRaises(ValueError):
+            # Test avec un float
+            sigmoid(0.5)
+        # Teste si une erreur est levée si x n'est pas un entier
+        with self.assertRaises(ValueError):
+            # Test avec un string
+            sigmoid("0")
+    
     # Test de la fonction sigmoid
-    def test_sigmoid(self):
+    def test_sigmoid_sortie(self):
         # Teste si sigmoid(-150) est égal à 0
         self.assertAlmostEqual(sigmoid(-150), 0, places=5)
         # Teste si sigmoid(150) est égal à 1
