@@ -40,13 +40,6 @@ class SigmoidNeuron(Neuron):
 
         # Méthode pour obtenir la sortie du neurone
         def getOutput(self, inputs):
-            # Vérifie que le paramètre inputs est une liste
-            if not isinstance(inputs, list) or not all(isinstance(x, (int, float)) for x in inputs):
-                # Lève une erreur si inputs n'est pas une liste
-                raise ValueError("L'entrée doit etre une liste doit être une liste avec des valeurs numériques")
-            elif len(list) == 0:
-                raise ValueError("Input list cannot be empty")
-            
             # Utilise la méthode de la classe mère pour obtenir la somme pondérée des entrées
             sortie_getOutput = super().getOutput(inputs)
             # Applique la fonction sigmoïde sur la somme pondérée et retourne le résultat
