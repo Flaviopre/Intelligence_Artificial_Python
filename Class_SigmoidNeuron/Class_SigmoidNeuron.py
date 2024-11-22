@@ -37,3 +37,14 @@ class SigmoidNeuron(Neuron):
         super().__init__(num_inputs)
         # Initialise le nombre d'entrées du neurone
         self.num_inputs = num_inputs    
+
+        # Méthode pour obtenir la sortie du neurone
+        def getOutput(self, inputs):
+            # Vérifie que le paramètre inputs est une liste
+            if not isinstance(inputs, list):
+                # Lève une erreur si inputs n'est pas une liste
+                raise ValueError("L'entrée doit etre une liste doit être une liste")
+            # Utilise la méthode de la classe mère pour obtenir la somme pondérée des entrées
+            sortie_getOutput = super().getOutput(inputs)
+            # Applique la fonction sigmoïde sur la somme pondérée et retourne le résultat
+            return sigmoid(sortie_getOutput)
