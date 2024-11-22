@@ -181,9 +181,8 @@ class Vérification_Neuron(unittest.TestCase):
         nombre_al_entre_5_et_10 = random.randint(5, 10)
         # Crée un neurone avec un nombre aléatoire d'entrées entre 5 et 10
         test1 = Neuron(nombre_al_entre_5_et_10)
-            
         # Teste le dernier coefficient en plaçant toutes les entrées à zéro
-        # Modifie la valeur du dernier coefficient qui vaudra 0 à la position donnée par nombre_al_entre_5_et_10
+        # Modifie la valeur du dernier coefficient qui vaudra 0 à la position donnée par nombre_al_entre_5_et_10 + 1  
         test1.setCoefficient(nombre_al_entre_5_et_10, 0.5)
         # Récupère la sortie du neurone avec la liste de zéros
         sortie = test1.getOutput([0.0 for _ in range(nombre_al_entre_5_et_10)])
