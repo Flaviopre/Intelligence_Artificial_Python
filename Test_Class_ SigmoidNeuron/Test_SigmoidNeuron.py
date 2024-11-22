@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import unittest
 # Importe le module 'random'
 import random
-# Importer le fichier Travail_Préli_Sigmoid du dossier Travail_Préli_Sigmoid
+# Importer la fonction sigmoid du fichier Class_SigmoidNeuron
 from Class_SigmoidNeuron.Class_SigmoidNeuron import sigmoid
 
 # Création de la classe de test TestSigmoid qui va tester la fonction sigmoid
