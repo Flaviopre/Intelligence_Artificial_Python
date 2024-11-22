@@ -57,7 +57,11 @@ class TestSigmoidNeuron(unittest.TestCase):
         for i in range(0, nb_aléatoire + 1):
             # Met le coefficient à 0    
             sigmoid_neuron.setCoefficient(i, 0.0)
-        
+        # Teste du getOutput avec une liste de 0
+        entré_getOutput = [random.uniform(-10.0, 10.0) for i in range(nb_aléatoire)]
+        sortie_getOutput_SigmoidNeuron = sigmoid_neuron.getOutput_SigmoidNeuron(entré_getOutput)
+        # Teste si la sortie du neurone est égale à 0.5
+        self.assertAlmostEqual(sortie_getOutput_SigmoidNeuron, 0.5, places=5)
             
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()     
