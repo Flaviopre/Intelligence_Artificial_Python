@@ -57,11 +57,44 @@ class TestSigmoidNeuron(unittest.TestCase):
         for i in range(0, nb_aléatoire + 1):
             # Met le coefficient à 0    
             sigmoid_neuron.setCoefficient(i, 0.0)
-        # Teste du getOutput avec une liste de 0
+        # Création d'une liste d'entrées aléatoires entre -10 et 10
         entré_getOutput = [random.uniform(-10.0, 10.0) for i in range(nb_aléatoire)]
+        # Calcul de la sortie du neurone avec les entrées aléatoires et les coefficients à 0
         sortie_getOutput_SigmoidNeuron = sigmoid_neuron.getOutput_SigmoidNeuron(entré_getOutput)
         # Teste si la sortie du neurone est égale à 0.5
         self.assertAlmostEqual(sortie_getOutput_SigmoidNeuron, 0.5, places=5)
-            
+        
+    def test_getOutput_sortie_positif(self):
+        # Création d'un neurone avec un nombre d'entrées aléatoires
+        nb_aléatoire = random.randint(5, 10)
+        # Création d'un neurone avec un nombre d'entrées aléatoires
+        sigmoid_neuron = SigmoidNeuron(nb_aléatoire)
+        # Boucle qui parcourt la liste des coefficients du neurone
+        for i in range(0, nb_aléatoire + 1):
+            # Mettre tous les coefficients en positif
+            sigmoid_neuron.setCoefficient(i, random.uniform(0, 1))
+        # Creation d'une liste d'entrées aléatoires entre 0 et 10 donc positifs
+        entré_getOutput = [random.uniform(0, 10) for i in range(nb_aléatoire)]
+        # Calcul de la sortie du neurone avec les entrées aléatoires positives et les coefficients positifs
+        sortie_getOutput_SigmoidNeuron = sigmoid_neuron.getOutput_SigmoidNeuron(entré_getOutput)
+        # Teste si la sortie du neurone est positive ou égale à 0
+        self.assertGreater(sortie_getOutput_SigmoidNeuron, 0.0)
+    
+    def test_getOutput_sortie_négatif(self):
+        # Création d'un neurone avec un nombre d'entrées aléatoires
+        nb_aléatoire = random.randint(5, 10)
+        # Création d'un neurone avec un nombre d'entrées aléatoires
+        sigmoid_neuron = SigmoidNeuron(nb_aléatoire)
+        # Boucle qui parcourt la liste des coefficients du neurone
+        for i in range(0, nb_aléatoire + 1):
+            # Mettre tous les coefficients en négatif
+            sigmoid_neuron.setCoefficient(i, random.uniform(-1, 0))
+        # Creation d'une liste d'entrées aléatoires entre -10 et 10 donc négatifs
+        entré_getOutput = [random.uniform(-10, 0) for i in range(nb_aléatoire)]
+        # Calcul de la sortie du neurone avec les entrées aléatoires négatives et les coefficients négatifs
+        sortie_getOutput_SigmoidNeuron = sigmoid_neuron.getOutput_SigmoidNeuron(entré_getOutput)
+        # Teste si la sortie du neurone est négative ou égale à 0
+        self.assertGreater(sortie_getOutput_SigmoidNeuron, 0.0)
+         
 if __name__ == '__main__':
     unittest.main()     
