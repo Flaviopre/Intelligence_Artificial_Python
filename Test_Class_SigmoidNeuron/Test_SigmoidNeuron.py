@@ -48,7 +48,7 @@ class TestSigmoidNeuron(unittest.TestCase):
         # Teste si le nombre d'entrées du neurone est égal à 3
         self.assertEqual(sigmoid_neuron.num_inputs, 3)
         
-    def test_getOutput_sortie(self):
+    def test_getOutput_sortie_0(self):
         # Création d'un neurone avec un nombre d'entrées aléatoires
         nb_aléatoire = random.randint(5, 10)
         # Création d'un neurone avec un nombre d'entrées aléatoires
