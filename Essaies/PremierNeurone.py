@@ -21,16 +21,16 @@ from Class_SigmoidNeuron.Class_SigmoidNeuron import SigmoidNeuron
 
 # Description: Premier neurone avec 7 entrées et 1 sortie représentant un neurone qui apprend àun affichage de 7 segments
 # Entrées: 7 entrées représentant les 7 segments
-entrees = [ [1,1,1,1,1,1,0] ,\
-[0,1,1,0,0,0,0] ,\
-[1,1,0,1,1,0,1] ,\
-[1,1,1,1,0,0,1] ,\
-[1,1,1,0,0,1,1] ,\
-[1,0,1,1,0,1,1] ,\
-[1,0,1,1,1,1,1] ,\
-[1,1,1,0,0,0,0] ,\
-[1,1,1,1,1,1,1] ,\
-[1,1,1,1,0,1,1] ]
+entrees = [ [1.0,1.0,1.0,1.0,1.0,1.0,0.0] ,\
+[0.0,1.0,1.0,0.0,0.0,0.0,0.0] ,\
+[1.0,1.0,0.0,1.0,1.0,0.0,1.0] ,\
+[1.0,1.0,1.0,1.0,0.0,0.0,1.0] ,\
+[1.0,1.0,1.0,0.0,0.0,1.0,1.0] ,\
+[1.0,0.0,1.0,1.0,0.0,1.0,1.0] ,\
+[1.0,0.0,1.0,1.0,1.0,1.0,1.0] ,\
+[1.0,1.0,1.0,0.0,0.0,0.0,0.0] ,\
+[1.0,1.0,1.0,1.0,1.0,1.0,1.0] ,\
+[1.0,1.0,1.0,1.0,0.0,1.0,1.0] ]
 
 # Sorties: 10 sorties représentant les chiffres de 0 à 9
 sorties = [ 0, 0, 0, 0, 1, 0, 0 ,0 ,0 ,0]
@@ -42,7 +42,7 @@ neuron = SigmoidNeuron(7)
 learning = Learning(neuron, entrees, sorties)
 
 # Calcul des erreur a l'aide de la méthode simpleTraining
-learning.simpleTraining()
+errors=learning.simpleTraining()
 
 # Affichage du graphique de l'évolution de l'erreur moyenne
 plt.plot(errors)
