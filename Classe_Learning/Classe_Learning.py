@@ -7,6 +7,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # Importation de la classe Neuron du dossier Classe_Neuron
 from Class_Neuron.class_neuron import Neuron
 
+# Importation du module random
+import random
+
 # Création de la classe Learning qui va permettre d'entraîner un neurone
 class Learning:
     # Constructeur de la classe Learning avec 3 paramètres
@@ -38,6 +41,35 @@ class Learning:
         # Retourne l'erreur
         return error
     
-    def computeAverageError(self):
+    def __computeAverageError(self):
         return sum(self.computeError(i) for i in range(len(self.inputs))) / len(self.inputs)
     
+    # Méthode publique pour entraîner le neurone
+    def simpleTraining(self, epochs = 1000):
+        # Initialisation de l'erreur
+        error = []
+        for _ in range(epochs):
+            # Calcul de l'erreur moyenne actuelle
+            avg_error = self.computeAverageError()
+            # Ajout de l'erreur moyenne actuelle à la liste des erreurs
+            error.append(avg_error)
+
+            # Choix d'un coefficient aléatoire à mettre à jour
+            index = random.randint(0, len(self.neuron.coefficients) - 1)
+            # Sauvegarde de l'ancienne valeur du coefficient 
+            old_value = self.neuron.coefficients[index]
+
+            # Modification aléatoire du coefficient
+            delta = random.uniform(-0.1, 0.1)
+            # Mise à jour du coefficient avec la nouvelle valeur
+            self.neuron.coefficients[index] += delta
+
+            # Calcul de la nouvelle erreur
+            new_avg_error = self.computeAverageError()
+
+            # Réinitialisation si l'erreur augmente
+            if new_avg_error > avg_error:
+                # Réinitialisation de la valeur du coefficient
+                self.neuron.coefficients[index] = old_value
+
+        return error
