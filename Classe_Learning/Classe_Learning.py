@@ -37,3 +37,7 @@ class Learning:
         error = (predicted_output - self.__outputs[index]) ** 2
         # Retourne l'erreur
         return error
+    
+    def computeAverageError(self):
+        return sum(self.computeError(i) for i in range(len(self.inputs))) / len(self.inputs)
+    
