@@ -20,7 +20,7 @@ class TestLearning(unittest.TestCase):
         # Création des outputs avec une liste monodimensionnelle qui ets une liste basique
         outputs = [0.1, 0.2, 0.3]
         # Création de l'instance de la classe Learning
-        learning_instance = Learning(0, inputs ,outputs)
+        learning_instance = Learning(3, inputs ,outputs)
         # Teste si la première dimension de inputs est égale à celle de outputs
         self.assertEqual(len(learning_instance._Learning__inputs), len(learning_instance._Learning__outputs))
     
@@ -52,6 +52,25 @@ class TestLearning(unittest.TestCase):
         with self.assertRaises(ValueError):
             # Création de l'instance de la classe Learning
             learning_instance = Learning(0, inputs ,outputs)
+
+    
+    def test_inputs_taille_neurone_différente(self):
+        # Création des inputs avec une liste de listes (matrice)
+        inputs = [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6], [0.7, 0.8, 0.9]]
+        # Création des outputs avec une liste monodimensionnelle qui ets une liste basique
+        outputs = [0.1, 0.2, 0.3]
+        # Regarde l'erreur levée
+        with self.assertRaises(ValueError):
+            # Création de l'instance de la classe Learning
+            learning_instance = Learning(2, inputs ,outputs)
+        # Création des inputs avec une liste de listes (matrice)
+        inputs = [[0.1, 0.2], [0.4, 0.5], [0.7, 0.8]]
+        # Création des outputs avec une liste monodimensionnelle qui ets une liste basique
+        outputs = [0.1, 0.2, 0.3]
+        # Regarde l'erreur levée
+        with self.assertRaises(ValueError):
+            # Création de l'instance de la classe Learning
+            learning_instance = Learning(2, inputs ,outputs)
         
 if __name__ == '__main__':
     unittest.main()     
