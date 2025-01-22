@@ -12,3 +12,8 @@ class Learning:
         # Vérifications de la taille des entrées  et des dimensions        
         if inputs.shape[0] != outputs.shape[0]:
             raise ValueError("La première dimension de inputs doit être égale à celle de outputs.")
+        # Attributs privés de la classe Learning
+        self.__neuron = neuron
+        self.__inputs = inputs
+        self.__outputs = outputs
+        
