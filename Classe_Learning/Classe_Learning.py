@@ -8,8 +8,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 class Learning:
     # Constructeur de la classe Learning avec 3 paramètres
     def __init__(self, neuron, inputs, outputs):
-        # Vérifications de la taille des entrées  et des dimensions        
-        if inputs[0] != outputs:
+        # Si le nombre de sous-listes dans inputs diffère du nombre d'éléments dans outputs, une exception est levée.        
+        if len(inputs) != len(outputs):
             raise ValueError("La première dimension de inputs doit être égale à celle de outputs.")
         # Attributs privés de la classe Learning
         self.__neuron = neuron
