@@ -35,4 +35,5 @@ class Learning:
         predicted_output = self.__neuron.getOutput(self.__inputs[index])
         # Calcul de l'erreur quadratique
         error = (predicted_output - self.__outputs[index]) ** 2
+        # Retourne l'erreur
         return error
