@@ -26,6 +26,8 @@ class Learning:
             raise ValueError("outputs doit être une liste.")
         self.__inputs = inputs
         self.__outputs = outputs
+        if len(inputs) != self.__neuron.getNeuronSize():
+            raise ValueError("Le nombre d'entrées du neurone doit être égal à la taille des entrées.")
     
     # Méthode privée pour calculer l'erreur
     def __computeError(self, index):
