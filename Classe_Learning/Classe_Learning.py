@@ -15,3 +15,11 @@ class Learning:
         self.__neuron = neuron
         self.__inputs = inputs
         self.__outputs = outputs
+    
+    # Méthode privée pour calculer l'erreur
+    def __computeError(self, index):
+        # Calcul de la sortie du neurone pour le jeu d'entrées donné
+        predicted_output = self.__neuron.predict(self.__inputs[index])
+        # Calcul de l'erreur quadratique
+        error = (predicted_output - self.__outputs[index]) ** 2
+        return error
