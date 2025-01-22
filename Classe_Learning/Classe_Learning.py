@@ -18,18 +18,20 @@ class Learning:
         if len(inputs) != len(outputs):
             raise ValueError("La première dimension de inputs doit être égale à celle de outputs.")
         # Attributs privés de la classe Learning
-        self.__neuron = Neuron(neuron)
+        self.__neuron = neuron
         # Si inputs n'est pas une liste de listes, une exception est levée.
         if not isinstance(inputs, list):
             # Si inputs n'est pas une liste de listes, une exception est levée.
             raise ValueError("inputs doit être une liste de listes.")
-        # Si outputs n'est pas une liste, une exception est lev
+        # Si outputs n'est pas une liste, une exception est levée.
         if not isinstance(outputs, list):
             # Si outputs n'est pas une liste, une exception est levée.
             raise ValueError("outputs doit être une liste.")
         self.__inputs = inputs
         self.__outputs = outputs
-        if len(inputs) != self.__neuron.getNeuronSize():
+        if len(inputs[0]) != self.__neuron.getNeuronSize():
+            print("inputs size: ", len(inputs[0]))
+            print("neuron size: ", self.__neuron.getNeuronSize())
             raise ValueError("Le nombre d'entrées du neurone doit être égal à la taille des entrées.")
     
     # Méthode privée pour calculer l'erreur
@@ -42,7 +44,7 @@ class Learning:
         return error
     
     def __computeAverageError(self):
-        return sum(self.computeError(i) for i in range(len(self.inputs))) / len(self.inputs)
+        return sum(self.__computeError(i) for i in range(len(self.__inputs))) / len(self.__inputs)
     
     # Méthode publique pour entraîner le neurone
     def simpleTraining(self, epochs = 1000):
@@ -51,26 +53,28 @@ class Learning:
         # Boucle pour chaque époque d'entraînement
         for _ in range(epochs):
             # Calcul de l'erreur moyenne actuelle
-            avg_error = self.computeAverageError()
+            avg_error = self.__computeAverageError()
             # Ajout de l'erreur moyenne actuelle à la liste des erreurs
             error.append(avg_error)
 
             # Choix d'un coefficient aléatoire à mettre à jour
-            index = random.randint(0, len(self.neuron.coefficients) - 1)
-            # Sauvegarde de l'ancienne valeur du coefficient 
-            old_value = self.neuron.coefficients[index]
+            index = random.randint(1, self.__neuron.getNeuronSize())
+            # Sauvegarde de l'ancienne valeur du coefficient
+            old_value = self.__neuron.getCoefficient(index)
 
             # Modification aléatoire du coefficient
             delta = random.uniform(-0.1, 0.1)
             # Mise à jour du coefficient avec la nouvelle valeur
-            self.neuron.coefficients[index] += delta
+            new_value = self.__neuron.getCoefficient(index) + delta
+            self.__neuron.setCoefficient(index, new_value)
 
             # Calcul de la nouvelle erreur
-            new_avg_error = self.computeAverageError()
+            new_avg_error = self.__computeAverageError()
 
             # Réinitialisation si l'erreur augmente
             if new_avg_error > avg_error:
                 # Réinitialisation de la valeur du coefficient
-                self.neuron.coefficients[index] = old_value
+                self.__neuron.setCoefficient(index, old_value)
         # Retourne la liste des erreurs
         return error
+    
