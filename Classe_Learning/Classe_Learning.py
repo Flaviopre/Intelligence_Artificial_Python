@@ -48,6 +48,7 @@ class Learning:
     def simpleTraining(self, epochs = 1000):
         # Initialisation de l'erreur
         error = []
+        # Boucle pour chaque époque d'entraînement
         for _ in range(epochs):
             # Calcul de l'erreur moyenne actuelle
             avg_error = self.computeAverageError()
@@ -71,5 +72,5 @@ class Learning:
             if new_avg_error > avg_error:
                 # Réinitialisation de la valeur du coefficient
                 self.neuron.coefficients[index] = old_value
-
+        # Retourne la liste des erreurs
         return error
