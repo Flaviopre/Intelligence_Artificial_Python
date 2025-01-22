@@ -16,6 +16,14 @@ class Learning:
             raise ValueError("La première dimension de inputs doit être égale à celle de outputs.")
         # Attributs privés de la classe Learning
         self.__neuron = Neuron(neuron)
+        # Si inputs n'est pas une liste de listes, une exception est levée.
+        if not isinstance(inputs, list):
+            # Si inputs n'est pas une liste de listes, une exception est levée.
+            raise ValueError("inputs doit être une liste de listes.")
+        # Si outputs n'est pas une liste, une exception est lev
+        if not isinstance(outputs, list):
+            # Si outputs n'est pas une liste, une exception est levée.
+            raise ValueError("outputs doit être une liste.")
         self.__inputs = inputs
         self.__outputs = outputs
     
