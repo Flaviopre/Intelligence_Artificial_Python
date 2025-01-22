@@ -1,7 +1,6 @@
 # Importation des modules nécessaires pour l'ajout du chemin parent au sys.path
 import sys
 import os
-import numpy as np
 # Ajouter le chemin parent au sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -16,4 +15,3 @@ class Learning:
         self.__neuron = neuron
         self.__inputs = inputs
         self.__outputs = outputs
-        
