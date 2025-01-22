@@ -35,4 +35,22 @@ entrees = [ [1,1,1,1,1,1,0] ,\
 # Sorties: 10 sorties représentant les chiffres de 0 à 9
 sorties = [ 0, 0, 0, 0, 1, 0, 0 ,0 ,0 ,0]
 
-# Création de la classe Neuron
+# Création de la classe Neuron avec 7 entrées
+neuron = SigmoidNeuron(7)
+
+# Création de l'instance de la classe Learning
+learning = Learning(neuron, entrees, sorties)
+
+# Calcul des erreur a l'aide de la méthode simpleTraining
+learning.simpleTraining()
+
+# Affichage du graphique de l'évolution de l'erreur moyenne
+plt.plot(errors)
+# Affichage du titre du graphique et des labels des axes
+plt.title("Évolution de l'erreur moyenne")
+# Affichage du titre de l'axe des abscisses
+plt.xlabel("Époques")
+# Affichage du titre de l'axe des ordonnées
+plt.ylabel("Erreur moyenne")
+# Affichage de la grille
+plt.show()
