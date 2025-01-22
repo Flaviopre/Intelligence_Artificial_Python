@@ -27,5 +27,16 @@ class TestLearning(unittest.TestCase):
         # Teste si la première dimension de inputs est égale à celle de outputs
         self.assertEqual(learning_instance._Learning__inputs.shape[0], learning_instance._Learning__outputs.shape[0])
     
+    # Test des entrées et des sorties si différente et lève une erreur
+    def test_input_output_différent(self):
+        # Création des inputs avec une liste de listes (matrice)
+        inputs = np.array([[0.1, 0.2, 0.3], [0.4, 0.5, 0.6], [0.7, 0.8, 0.9]])
+        # Création des outputs avec une liste monodimensionnelle qui ets une liste basique
+        outputs = np.array([0.1, 0.2])
+        # Regarde l'erreur levée
+        with self.assertRaises(ValueError):
+            # Création de l'instance de la classe Learning
+            learning_instance = Learning(0, inputs ,outputs)
+
 if __name__ == '__main__':
     unittest.main()     
