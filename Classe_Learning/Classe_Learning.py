@@ -4,6 +4,9 @@ import os
 # Ajouter le chemin parent au sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# Importation de neuron qui va être utilisé 
+from Classe_Neuron.Classe_Neuron import Neuron
+
 # Création de la classe Learning qui va permettre d'entraîner un neurone
 class Learning:
     # Constructeur de la classe Learning avec 3 paramètres
