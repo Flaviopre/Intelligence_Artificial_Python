@@ -4,6 +4,9 @@ import os
 # Ajouter le chemin parent au sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# Importation de la classe Neuron du dossier Classe_Neuron
+from Class_Neuron.class_neuron import Neuron
+
 # Création de la classe Learning qui va permettre d'entraîner un neurone
 class Learning:
     # Constructeur de la classe Learning avec 3 paramètres
@@ -12,7 +15,7 @@ class Learning:
         if len(inputs) != len(outputs):
             raise ValueError("La première dimension de inputs doit être égale à celle de outputs.")
         # Attributs privés de la classe Learning
-        self.__neuron = neuron
+        self.__neuron = Neuron(neuron)
         self.__inputs = inputs
         self.__outputs = outputs
     
