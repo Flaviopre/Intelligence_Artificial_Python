@@ -22,7 +22,7 @@ class TestLearning(unittest.TestCase):
         # Création de l'instance de la classe Learning
         learning_instance = Learning(0, inputs ,outputs)
         # Teste si la première dimension de inputs est égale à celle de outputs
-        self.assertEqual(learning_instance._Learning__inputs[0], learning_instance._Learning__outputs)
+        self.assertEqual(len(learning_instance._Learning__inputs), len(learning_instance._Learning__outputs))
     
     # Test des entrées et des sorties si différente et lève une erreur
     def test_input_output_différent(self):
