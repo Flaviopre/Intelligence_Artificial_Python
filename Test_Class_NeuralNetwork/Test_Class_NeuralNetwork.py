@@ -67,7 +67,32 @@ class TestNeuralNetwork(unittest.TestCase):
                     neuronal_network._NeuralNetwork__layers[layer][neuron].setCoefficient(coeff, random_number)
                     # Test si le coefficient du neurone est égal à random_number et qu'il a bien été changé
                     self.assertEqual(neuronal_network._NeuralNetwork__layers[layer][neuron].getCoefficient(coeff), random_number)
-
+    
+    def test_get_outputs(self):
+        # Création d'un objet de la classe NeuralNetwork avec 2 couches de 2 neurones linéaires chacune
+        neuronal_network = NeuralNetwork(2, [2, 2], ["NEU", "NEU"])
+        
+        # Initialisation de tous les coefficients à zéro
+        for layer in range(len(neuronal_network._NeuralNetwork__layers)):
+            # Regarde chaque neurone de chaque couche du réseau de neurones
+            for neuron in range(len(neuronal_network._NeuralNetwork__layers[layer])):
+                # Regarde chaque coefficient de chaque neurone de chaque couche du réseau de neurones
+                for coeff in range(1, neuronal_network._NeuralNetwork__layers[layer][neuron].getNeuronSize() + 1):
+                    # Modification du coefficient du neurone à 0.0
+                    neuronal_network._NeuralNetwork__layers[layer][neuron].setCoefficient(coeff, 0.0)
+        
+        # Modification du premier coefficient du deuxième neurone dans la première couche à 1.0
+        neuronal_network._NeuralNetwork__layers[0][1].setCoefficient(1, 1.0)
+        
+        # Modification du deuxième coefficient du deuxième neurone dans la deuxième couche à 1.0
+        neuronal_network._NeuralNetwork__layers[1][1].setCoefficient(2, 1.0)
+        
+        # Test des sorties pour une entrée spécifique
+        inputs = [1.0, 2.0]
+        outputs = neuronal_network.getOutputs(inputs)
+        
+        # La valeur de sortie doit correspondre à l'entrée concernée
+        self.assertEqual(outputs, [1.0, 2.0])
 if __name__ == '__main__':
     unittest.main()
     
