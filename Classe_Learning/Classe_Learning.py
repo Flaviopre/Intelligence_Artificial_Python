@@ -84,7 +84,7 @@ class Learning:
         # Initialisation du coefficient aléatoire entre 0 et 0.1
         coeff_ml = random.uniform(0, 0.1)
         # Initialisation du booléen aléatoire
-        bool_ml= random.choice([True, False])
+        bool_ml = random.choice([True, False])
         
         # Boucle pour chaque époque d'entraînement
         for _ in range(epochs):
@@ -102,7 +102,6 @@ class Learning:
             if bool_ml:
                 # Ajout du coefficient aléatoire à la valeur du coefficient actuel
                 new_value = old_value + coeff_ml
-            # Sinonl
             else:
                 # Soustraction du coefficient aléatoire à la valeur du coefficient actuel
                 new_value = old_value - coeff_ml
@@ -120,10 +119,11 @@ class Learning:
                 coeff_ml = random.uniform(0, 0.1)
                 # Choix d'un nouveau booléen aléatoire
                 bool_ml = random.choice([True, False])
-            # Sinon    
             else:
                 # Augmenter la valeur absolue de la modification de 10 %
                 coeff_ml *= 1.1
+        # Retourne la liste des erreurs
+        return error
 
         # Retourne la liste des erreurs
         return error
