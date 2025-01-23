@@ -55,18 +55,19 @@ class TestNeuralNetwork(unittest.TestCase):
     def test_get_set_coefficient(self):
     # Création d'un objet de la classe NeuralNetwork avec 3 paramètres et 2 éléments dans neuronsPerLayer et 2 éléments dans layerType
         neuronal_network = NeuralNetwork(2, [2, 2], ["NEU", "NEU"])
+        print(neuronal_network)
         # Regarde chaque couche du réseau de neurones
-        for layer in range(len(neuronal_network.layers)):
+        for layer in range(len(neuronal_network.__layers)):
             # Regarde chaque neurone de chaque couche du réseau de neurones
-            for neuron in range(len(neuronal_network.layers[layer])):
+            for neuron in range(len(neuronal_network.__layers[layer])):
                 # Regarde chaque coefficient de chaque neurone de chaque couche du réseau de neurones
-                for coeff in range(neuronal_network.layers[layer][neuron].getNeuronSize() + 1):
+                for coeff in range(neuronal_network.__layers[layer][neuron].getNeuronSize() + 1):
                     # Affectation d'un nombre aléatoire entre 0 et 1 à random_number
                     random_number = random.random()
                     # Changement du coefficient du neurone
-                    neuronal_network.layers[layer][neuron].setCoefficient(coeff, random_number)
+                    neuronal_network.__layers[layer][neuron].setCoefficient(coeff, random_number)
                     # Test si le coefficient du neurone est égal à random_number et qu'il a bien été changé
-                    self.assertEqual(neuronal_network.layers[layer][neuron].getCoefficient(coeff), random_number)
+                    self.assertEqual(neuronal_network.__layers[layer][neuron].getCoefficient(coeff), random_number)
 
 if __name__ == '__main__':
     unittest.main()
