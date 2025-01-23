@@ -60,7 +60,7 @@ class NeuralNetwork:
             self.__layers.append(layer)
             # previousLayerSize prend la valeur de neuronsPerLayer[i] 
             previousLayerSize = neuronsPerLayer[i]
-        return layer
+
             
     # Méthode publique pour obtenir le nombre de couches avec 4 paramètres la taille des entrées, le nombre de neurones par couche, le type de couche et le type de neurone
     def getCoefficient(self, layer, neuron, position):
