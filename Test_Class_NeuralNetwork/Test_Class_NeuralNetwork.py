@@ -32,6 +32,24 @@ class TestNeuralNetwork(unittest.TestCase):
         with self.assertRaises(ValueError):
             # Création d'un objet de la classe NeuralNetwork avec 3 paramètres et 3 éléments dans neuronsPerLayer et 2 éléments dans layerType
             NeuralNetwork(2, [2, 3, 4], ["SIG", "NEU"])
+        
+    # Test de la taille des listes neuronsPerLayer et layerType
+    def test_type_inputsLength(self):
+        
+        # Teste si une exception est levée si inputsLength n'est pas un entier
+        with self.assertRaises(ValueError):
+            # Création d'un objet de la classe NeuralNetwork avec 3 paramètres et inputsLength n'est pas un entier
+            NeuralNetwork("2", [2, 3], ["SIG", "NEU"])
+            
+        # Teste si une exception est levée si neuronsPerLayer n'est pas une liste 
+        with self.assertRaises(ValueError):
+            # Création d'un objet de la classe NeuralNetwork avec 3 paramètres et neuronsPerLayer n'est pas une liste
+            NeuralNetwork(2.0, "3,5", ["SIG", "NEU"])
+        
+        # Test si une exception est levée si layerType n'est pas une liste
+        with self.assertRaises(ValueError):
+            # Création d'un objet de la classe NeuralNetwork avec 3 paramètres et layerType n'est pas une liste
+            NeuralNetwork(2, [2, 3], "SIG, NEU") 
 
 if __name__ == '__main__':
     unittest.main()
