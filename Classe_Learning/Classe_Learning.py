@@ -63,9 +63,9 @@ class Learning:
             old_value = self.__neuron.getCoefficient(index)
 
             # Modification aléatoire du coefficient
-            delta = random.uniform(-0.1, 0.1)
+            coeff_ml = random.uniform(-0.1, 0.1)
             # Mise à jour du coefficient avec la nouvelle valeur
-            new_value = self.__neuron.getCoefficient(index) + delta
+            new_value = self.__neuron.getCoefficient(index) + coeff_ml
             self.__neuron.setCoefficient(index, new_value)
 
             # Calcul de la nouvelle erreur
@@ -75,6 +75,56 @@ class Learning:
             if new_avg_error > avg_error:
                 # Réinitialisation de la valeur du coefficient
                 self.__neuron.setCoefficient(index, old_value)
+        # Retourne la liste des erreurs
+        return error
+    
+    def memoryLearning(self, epochs=1000):
+        # Initialisation de l'erreur
+        error = []
+        # Initialisation du coefficient aléatoire entre 0 et 0.1
+        coeff_ml = random.uniform(0, 0.1)
+        # Initialisation du booléen aléatoire
+        bool_ml= random.choice([True, False])
+        
+        # Boucle pour chaque époque d'entraînement
+        for _ in range(epochs):
+            # Calcul de l'erreur moyenne actuelle
+            avg_error = self.__computeAverageError()
+            # Ajout de l'erreur moyenne actuelle à la liste des erreurs
+            error.append(avg_error)
+
+            # Choix d'un coefficient aléatoire à mettre à jour
+            index = random.randint(1, self.__neuron.getNeuronSize())
+            # Sauvegarde de l'ancienne valeur du coefficient
+            old_value = self.__neuron.getCoefficient(index)
+
+            # Modification du coefficient en fonction du booléen
+            if bool_ml:
+                # Ajout du coefficient aléatoire à la valeur du coefficient actuel
+                new_value = old_value + coeff_ml
+            # Sinonl
+            else:
+                # Soustraction du coefficient aléatoire à la valeur du coefficient actuel
+                new_value = old_value - coeff_ml
+            # Mise à jour du coefficient avec la nouvelle valeur
+            self.__neuron.setCoefficient(index, new_value)
+
+            # Calcul de la nouvelle erreur
+            new_avg_error = self.__computeAverageError()
+
+            # Réinitialisation si l'erreur augmente ou reste la même
+            if new_avg_error >= avg_error:
+                # Réinitialisation de la valeur du coefficient
+                self.__neuron.setCoefficient(index, old_value)
+                # Choix d'un nouveau coefficient aléatoire entre 0 et 0.1
+                coeff_ml = random.uniform(0, 0.1)
+                # Choix d'un nouveau booléen aléatoire
+                bool_ml = random.choice([True, False])
+            # Sinon    
+            else:
+                # Augmenter la valeur absolue de la modification de 10 %
+                coeff_ml *= 1.1
+
         # Retourne la liste des erreurs
         return error
     
