@@ -93,7 +93,7 @@ class TestNeuralNetwork(unittest.TestCase):
 
         # La valeur de sortie doit correspondre à l'entrée concernée
         self.assertEqual(outputs, [1.0, 2.0])
-        
+
 if __name__ == '__main__':
     unittest.main()
     
