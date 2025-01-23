@@ -95,3 +95,40 @@ plt.ylabel("Erreur moyenne")
 plt.grid(True)
 # Affichage du graphique 
 plt.show()
+
+# Création d'un nouvel objet de la classe SigmoidNeuron avec 7 entrées
+neuron_initial = SigmoidNeuron(7)
+
+# Sauvegarde des coefficients initiaux du neurone
+for _ in range(1, neuron_initial.getNeuronSize() + 1):
+    initial_coefficients = [neuron_initial.getCoefficient(i) for i in range(1, neuron_initial.getNeuronSize() + 1)]
+
+# Réalisation de l'apprentissage avec les données initiales
+learning_initial = Learning(neuron_initial, entrees, sorties)
+# Utilisation de la méthode simpleTraining afin de calculer les erreurs
+errors_initial = learning_initial.simpleTraining()
+
+# Remplacement des coefficients du neurone par ceux sauvegardés
+print("Initial coefficients: ", initial_coefficients)
+neuron_initial.setCoefficient(initial_coefficients)
+
+# Utilisation de la méthode memoryLearning
+errors_memory = learning_initial.memoryLearning()
+
+# Construction de la figure avec l'évolution de l'erreur selon les deux algorithmes
+# Affichage des erreurs initiales
+plt.plot(errors_initial, label='simpleTraining')
+# Affichage des erreurs de la mémoire
+plt.plot(errors_memory, label='memoryLearning')
+# Affichage du titre du graphique et des labels des axes
+plt.title("Comparaison de l'évolution de l'erreur moyenne")
+# Affichage du titre de l'axe des abscisses
+plt.xlabel("Époques")
+# Affichage du titre de l'axe des ordonnées
+plt.ylabel("Erreur moyenne")
+# Affichage de la légende
+plt.legend()
+# Affichage de la grille
+plt.grid(True)
+# Affichage du graphique
+plt.show()
