@@ -80,9 +80,7 @@ class NeuralNetwork:
             outputs = []
             # Boucle pour chaque neurone dans layer
             for neuron in layer:
-                print("Les entrées sont: ", inputs)
                 # Calculer la sortie du neurone pour les entrées données et l'ajouter à outputs
-                output = neuron.getOutput(inputs)
                 print("Les sorties sont : ", output)
                 outputs.append(output)
             # Les entrées deviennent les sorties
