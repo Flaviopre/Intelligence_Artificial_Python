@@ -126,7 +126,7 @@ class NeuralNetwork:
                     # Ajouter les poids à layer_weights
                     layer_weights.append(weights)
                 # Ajouter les poids de la couche à self.layers
-                self.layers.append(layer_weights))
+                self.layers.append(layer_weights)
         
         print("Network loaded successfully!")
         return self
