@@ -72,10 +72,10 @@ class Neuron:
             # Lève une exception de Valeur si le nombre d'entrées n'est pas égal au nombre d'entrées du neurone
             raise ValueError("Le nombre d'entrées doit être égal à " + str(self.num_inputs + 1) + ".")
         
-        # Vérifie si les entrées sont une liste
-        elif not isinstance(liste_entrees, list or numpy.ndarray):
-            # Lève une exception de Type si les entrées ne sont pas une liste
-            raise TypeError("Les entrées doivent être une liste.")
+        # Vérifie si les entrées sont une liste ou un tableau numpy
+        elif not isinstance(liste_entrees, (list, numpy.ndarray)):
+            # Lève une exception de Type si les entrées ne sont pas une liste ou un tableau numpy
+            raise TypeError("Les entrées doivent être une liste ou un tableau numpy.")
                 
         # Parcours les entrées
         for i in liste_entrees:
