@@ -85,12 +85,11 @@ class TestNeuralNetwork(unittest.TestCase):
                 coefficients = [neuronal_network._NeuralNetwork__layers[layer][neuron].getCoefficient(i + 1) for i in range(neuronal_network._NeuralNetwork__layers[layer][neuron].getNeuronSize())]
                 print(f"Layer {layer}, Neuron {neuron}, Coefficients: {coefficients}")
         
+        # Récupération des sorties 
         outputs = neuronal_network.getOutputs(inputs)
         
         # La valeur de sortie doit correspondre à l'entrée concernée
         self.assertEqual(outputs, [0.0, 0.0, 1.0])
-    
-    
 if __name__ == '__main__':
     unittest.main()
     
