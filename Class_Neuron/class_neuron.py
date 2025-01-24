@@ -1,6 +1,9 @@
 # Importe le module 'random'
 import random
 
+# Importe le module 'numpy'
+import numpy
+
 # Crée une classe 'Neuron'
 class Neuron:
     # Définit la méthode __init__ qui initialise les attributs de la classe 'Neuron'
@@ -70,7 +73,7 @@ class Neuron:
             raise ValueError("Le nombre d'entrées doit être égal à " + str(self.num_inputs + 1) + ".")
         
         # Vérifie si les entrées sont une liste
-        elif not isinstance(liste_entrees, list):
+        elif not isinstance(liste_entrees, list or numpy.ndarray):
             # Lève une exception de Type si les entrées ne sont pas une liste
             raise TypeError("Les entrées doivent être une liste.")
                 
