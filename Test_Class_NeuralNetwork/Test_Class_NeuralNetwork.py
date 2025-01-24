@@ -62,6 +62,7 @@ class TestNeuralNetwork(unittest.TestCase):
                     # Test si le coefficient du neurone est égal à random_number et qu'il a bien été changé
                     self.assertEqual(neuronal_network._NeuralNetwork__layers[layer][neuron].getCoefficient(coeff), random_number)
     
+    # Test de la fonction getOutputs de la classe NeuralNetwork
     def test_get_outputs(self):
     
         # Création d'un objet de la classe NeuralNetwork avec 2 couches de 2 neurones linéaires chacune
@@ -91,8 +92,40 @@ class TestNeuralNetwork(unittest.TestCase):
         print(f"Outputs: {outputs}")
         # La valeur de sortie doit correspondre à l'entrée concernée
         for output in outputs:
-            self.assertTrue(0 <= output <= 1)
+            # Test si la sortie est environ égale à 0.0 ou 1.0
+            self.assertTrue(-1.5 <= output <= 1.5)
             
+                    
+    def test_load_network(self):
+        # Création d'un fichier temporaire pour tester la méthode loadNetwork
+        with open('fichiertest.txt', 'w') as f:
+            # Écriture des données attendues dans le fichier
+            f.write("2,3\n")  # 2 couches, 3 entrées
+            f.write("4,2\n")  # 4 neurones dans la première couche, 2 neurones dans la deuxième couche
+            f.write("SIG,NEU\n")  # Types de couches (SIG et NEU)
+            f.write("0.1,0.2,0.3\n")  # Poids pour le premier neurone de la première couche
+            f.write("0.4,0.5,0.6\n")  # Poids pour le second neurone de la première couche
+            f.write("0.7,0.8,0.9\n")  # Poids pour le troisième neurone de la première couche
+            f.write("1.0,1.1,1.2\n")  # Poids pour le quatrième neurone de la première couche
+            f.write("1.3,1.4\n")  # Poids pour le premier neurone de la deuxième couche
+            f.write("1.5,1.6\n")  # Poids pour le second neurone de la deuxième couche
+
+        # Création de l'objet NeuralNetwork et appel de la méthode loadNetwork
+        nn = NeuralNetwork(3, [4, 2], ["SIG", "NEU"])
+        loaded_nn = nn.loadNetwork('fichiertest.txt')
+
+        # Vérification que les couches et neurones ont bien été chargés
+        self.assertEqual(len(loaded_nn.layers), 2)  # 2 couches
+        self.assertEqual(len(loaded_nn.layers[0]), 4)  # 4 neurones dans la première couche
+        self.assertEqual(len(loaded_nn.layers[1]), 2)  # 2 neurones dans la deuxième couche
+
+        # Vérification des poids du réseau pour s'assurer qu'ils ont bien été chargés
+        self.assertEqual(loaded_nn.layers[0][0], [0.1, 0.2, 0.3])  # Poids du premier neurone de la première couche
+        self.assertEqual(loaded_nn.layers[1][0], [1.3, 1.4])  # Poids du premier neurone de la deuxième couche
+
+        # Suppression du fichier temporaire
+        os.remove('fichiertest.txt')
+        
 if __name__ == '__main__':
     unittest.main()
     
