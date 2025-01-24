@@ -80,9 +80,53 @@ class NeuralNetwork:
             outputs = []
             # Boucle pour chaque neurone dans layer
             for neuron in layer:
-                # Ajout de la sortie du neurone pour les entrées données à outputs
-                outputs.append(neuron.getOutput(inputs))
+                print("Les entrées sont: ", inputs)
+                # Calculer la sortie du neurone pour les entrées données et l'ajouter à outputs
+                output = neuron.getOutput(inputs)
+                print("Les sorties sont : ", output)
+                outputs.append(output)
             # Les entrées deviennent les sorties
             inputs = outputs
         # Retourne les sorties
         return inputs
+    
+    # Méthode publique pour sauvegarder le réseau de neurones dans un fichier
+    def loadNetwork(self, filename):
+        # Ouvrir le fichier en mode lecture et le fermer automatiquement
+        with open(filename, 'r') as file:
+            # Lire la première ligne pour le nombre de couches et le nombre d'entrées
+            first_line = file.readline().strip().split(',')
+            # Convertir les valeurs en entiers et les attribuer à num_layers et num_inputs
+            num_layers = int(first_line[0])
+            # Convertir les valeurs en entiers et les attribuer à num_layers et num_inputs
+            num_inputs = int(first_line[1])
+
+            # Lire la deuxième ligne pour le nombre de neurones par couche
+            neurons_per_layer = list(map(int, file.readline().strip().split(',')))
+            # Attribuer les valeurs à neurons_per_layer et les convertir en entiers
+            self.neurons_per_layer = neurons_per_layer
+
+            # Lire la troisième ligne pour les types de couches
+            layer_types = file.readline().strip().split(',')
+            # Attribuer les valeurs à layer_types et les convertir en entiers
+            self.layer_types = layer_types
+
+            # Initialiser les poids et les biais
+            self.layers = []
+            # Boucle pour chaque couche dans le nombre de couches
+            for layer in range(num_layers):
+                # Attribuer les valeurs à neurons_per_layer et les convertir en entiers
+                num_neurons = neurons_per_layer[layer]
+                # Créer une liste vide layer_weights pour les poids de la couche
+                layer_weights = []
+                # Boucle pour chaque neurone dans le nombre de neurones par couche
+                for neuron in range(num_neurons):
+                    # Chaque ligne suivante contient les coefficients d'une couche, neurone par neurone
+                    weights = list(map(float, file.readline().strip().split(',')))
+                    # Ajouter les poids à layer_weights
+                    layer_weights.append(weights)
+                # Ajouter les poids de la couche à self.layers
+                self.layers.append(layer_weights))
+        
+        print("Network loaded successfully!")
+        return self
