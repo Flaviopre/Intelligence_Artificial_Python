@@ -82,7 +82,6 @@ class NeuralNetwork:
             for neuron in layer:
                 # Calculer la sortie du neurone pour les entrées données et l'ajouter à outputs
                 output = neuron.getOutput(inputs)
-                print("Les sorties sont : ", output)
                 outputs.append(output)
             # Les entrées deviennent les sorties
             inputs = outputs
